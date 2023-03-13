@@ -8,7 +8,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 const PORT = 5000;
-const { fillSurvey } = require("./fillSurvey");
+
 app.use(express.static("assets"));
 
 mongoose
@@ -25,7 +25,7 @@ mongoose
   });
 
 //Check if survey collection is empty. Populate collection if empty. FOR DEVELOPMENT USE ONLY
-fillSurvey();
+
 //--------------------------------------------
 app.use(cors());
 

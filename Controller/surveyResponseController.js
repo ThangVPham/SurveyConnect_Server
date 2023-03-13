@@ -4,9 +4,10 @@ const Survey = require("../Model/surveyModel");
 const submitSurveyResponse = async (req, res) => {
   const responseObj = {
     userRef: req.user,
-    surveyId: req.survey,
+    surveyId: req.headers.surveyid,
     response: req.body,
   };
+
   // console.log(responseObj);
   // // const response = await Response.findOne().populate(["userRef", "surveyId"]);
   // // console.log(response);
@@ -14,7 +15,9 @@ const submitSurveyResponse = async (req, res) => {
 
   try {
     await Response.create(responseObj);
-    await Survey.findByIdAndUpdate(req.survey, { $inc: { numResponse: 1 } });
+    await Survey.findByIdAndUpdate(req.headers.surveyid, {
+      $inc: { numResponse: 1 },
+    });
     console.log("Response Successfully Submitted");
     res.json({ message: "Response Successfully Submitted", status: "Success" });
   } catch (e) {

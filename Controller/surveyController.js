@@ -3,7 +3,7 @@ const Response = require("../Model/surveyResponseModel");
 
 const getAllSurveyData = async (req, res) => {
   try {
-    let surveys = await Survey.find({ surveyOwner: req.user.id }).sort({
+    let surveys = await Survey.find().sort({
       dateCreated: -1,
     });
 

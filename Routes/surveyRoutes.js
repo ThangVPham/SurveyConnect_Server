@@ -2,7 +2,10 @@ const express = require("express");
 const router = express.Router();
 const surveyController = require("../Controller/surveyController");
 const { authenticate, verifyAccess } = require("../auth/authMiddleware");
-
+const cors = require("cors");
+const corsOptions = {
+  origin: "https://surveyconnect.onrender.com/#/dashboard",
+};
 //This route is for survey takers to confirm they have access code
 router.post("/verifyaccess", verifyAccess, surveyController.getSurveyById);
 //This route is for survey creator to access dashboard with all their surveys

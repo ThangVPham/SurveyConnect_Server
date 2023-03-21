@@ -9,9 +9,9 @@ const corsOptions = {
 //This route is for survey takers to confirm they have access code
 router.post("/verifyaccess", verifyAccess, surveyController.getSurveyById);
 //This route is for survey creator to access dashboard with all their surveys
-router.get("/", surveyController.getAllSurveyData);
+router.get("/", cors(corsOptions), surveyController.getAllSurveyData);
 //This route is for survey takers to access survey once they've entered a valid access code
-router.get("/:id", surveyController.getSurveyById);
+router.get("/:id", cors(corsOptions), surveyController.getSurveyById);
 
 //These routes are for CRUD operations available to survey owner
 router.get(

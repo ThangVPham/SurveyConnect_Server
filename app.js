@@ -17,7 +17,7 @@ mongoose
     console.log("Remote Database Connected");
 
     app.listen(process.env.PORT || PORT, () => {
-      console.log(`Server is listening on port`);
+      console.log(`Server is listening on port ${process.env.PORT}`);
     });
   })
   .catch((err) => {

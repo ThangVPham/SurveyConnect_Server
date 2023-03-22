@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(express.static("assets"));
 
@@ -16,8 +16,8 @@ mongoose
   .then(() => {
     console.log("Remote Database Connected");
 
-    app.listen(process.env.PORT || PORT, () => {
-      console.log(`Server is listening on port ${process.env.PORT}`);
+    app.listen(PORT, () => {
+      console.log(`Server is listening on port ${PORT}`);
     });
   })
   .catch((err) => {
